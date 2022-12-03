@@ -1,6 +1,6 @@
 import React from 'react';
 import SideBar from "../../Components/SideBar/SideBar";
-import QuotesBlock from "../../Components/QuotesBlock/QuotesBlock";
+import QuotesBlock from "../QuotesBlock/QuotesBlock";
 
 
 const HomePage = () => {

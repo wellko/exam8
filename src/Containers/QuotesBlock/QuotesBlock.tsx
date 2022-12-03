@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import AxiosApi from "../../axios-api";
 import {Quote} from "../../types";
-import QuotePost from "../QuotePost/QuotePost";
+import QuotePost from "../../Components/QuotePost/QuotePost";
 import {useNavigate, useParams} from "react-router-dom";
 
 const QuotesBlock = () => {
