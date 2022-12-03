@@ -13,6 +13,8 @@ const QuotesBlock = () => {
 
     const [quotes, setQuotes] = useState<Quote[]>([]);
 
+    let content;
+
     let url = 'quotes.json';
 
     if (category) {
@@ -20,7 +22,7 @@ const QuotesBlock = () => {
     }
 
     const editFunc = (id: string) => {
-        const url = 'quotes/' + id + '/edit'
+        const url = '/quotes/' + id + '/edit'
         navigate(url);
     }
 
@@ -56,8 +58,6 @@ const QuotesBlock = () => {
         getQuotes().catch(console.error);
     }, [getQuotes]);
 
-    let content;
-
     if (quotes.length > 0) {
         content = (<div>
             {quotes.map(item => (<QuotePost quote={item} key={Math.random()} Edit={() => editFunc(item.id!)}
@@ -66,7 +66,6 @@ const QuotesBlock = () => {
     } else {
         content = (<><h1> There is no quotes yet</h1></>);
     }
-
 
     return (
         <>

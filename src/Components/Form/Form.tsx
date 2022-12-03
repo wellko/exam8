@@ -5,9 +5,16 @@ import {useNavigate, useParams} from "react-router-dom";
 
 
 const Form = () => {
+
     const {id} = useParams();
 
     const [spinner, setSpinner] = useState(false);
+
+    const [quote, setQuote] = useState<Quote>({
+        category: '',
+        quote: '',
+        author: '',
+    });
 
     const getFunc = useCallback(async (id: string) => {
         const url = '/quotes/' + id + '.json'
@@ -24,14 +31,7 @@ const Form = () => {
         }
     }, [getFunc, id]);
 
-
     const navigate = useNavigate();
-
-    const [quote, setQuote] = useState<Quote>({
-        category: '',
-        quote: '',
-        author: '',
-    });
 
     const ChangeEvent = (e: React.ChangeEvent<HTMLInputElement & HTMLTextAreaElement & HTMLSelectElement>) => {
         const {name, value} = e.target;
@@ -52,7 +52,7 @@ const Form = () => {
             alert('Fill all fields');
             setSpinner(false);
         }
-    }
+    };
 
     const FormPut = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -77,10 +77,10 @@ const Form = () => {
             <form onSubmit={id ? FormPut : FormSent}>
                 <div className='d-flex flex-column text-center border-dark border border-4 rounded mt-5'>
                     <h1 className='fw-bolder mb-5'>{id ? 'Edit quote' : 'Add quote'}</h1>
-                    <select name='category' onChange={ChangeEvent}>
-                        <option value=''>{id ? 'Click if you want to change category' : 'Select category'}</option>
-                        <option value='Wisdom'>Wisdom</option>
-                        <option value='Attitude'>Attitude</option>
+                    <select name='category' value={quote.category} onChange={ChangeEvent}>
+                        <option disabled value=''>Select category</option>
+                        <option  value='Wisdom'>Wisdom</option>
+                        <option  value='Attitude'>Attitude</option>
                         <option value='Love'>Love</option>
                         <option value='Success'>Success</option>
                         <option value='Time'>Time</option>
