@@ -26,6 +26,11 @@ const Form = () => {
     }, [])
 
     useEffect(() => {
+        setQuote({
+            category: '',
+            quote: '',
+            author: '',
+        })
         if (id) {
             getFunc(id).catch(console.error);
         }
