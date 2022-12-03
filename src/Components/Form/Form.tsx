@@ -75,7 +75,7 @@ const Form = () => {
     return (
         <div className='container'>
             <form onSubmit={id ? FormPut : FormSent}>
-                <div className='d-flex flex-column text-center border-primary border border-4 rounded mt-5'>
+                <div className='d-flex flex-column text-center border-dark border border-4 rounded mt-5'>
                     <h1 className='fw-bolder mb-5'>{id ? 'Edit quote' : 'Add quote'}</h1>
                     <select name='category' onChange={ChangeEvent}>
                         <option value=''>{id ? 'Click if you want to change category' : 'Select category'}</option>
@@ -94,7 +94,7 @@ const Form = () => {
                     <textarea className='w-75 align-self-center' name='quote' id='quote' rows={9} cols={90}
                               value={quote.quote}
                               onChange={ChangeEvent}/>
-                    <button className='btn btn-primary mt-5' type='submit'>{spinner ? (
+                    <button className='btn btn-dark mt-5' type='submit'>{spinner ? (
                             <div className="spinner-border text-dark" role="status">
                             </div>) :
                         id ? 'Edit' : 'Add'}
